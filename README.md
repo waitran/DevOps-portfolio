@@ -1,104 +1,234 @@
-<p align="center">
-  <img src="assets/banner.svg" alt="Даниил · Junior DevOps / SRE · Linux, automation, reliability" width="100%">
-</p>
+<div align="center">
 
-<p align="center">
-  <a href="https://github.com/waitran/sysadmin-portfolio/actions/workflows/ci.yml"><img src="https://github.com/waitran/sysadmin-portfolio/actions/workflows/ci.yml/badge.svg" alt="Portfolio checks"></a>
-  <img src="https://img.shields.io/badge/level-Junior%20%2F%20Intern-38bdf8?style=flat" alt="Junior / Intern">
-  <img src="https://img.shields.io/badge/projects-learning%20labs-a3e635?style=flat" alt="Учебные проекты">
-</p>
+<img src="https://img.shields.io/badge/WAITRAN-ENGINEERING%20PORTFOLIO-0f172a?style=for-the-badge&amp;labelColor=0f172a&amp;color=0f172a" alt="waitran · engineering portfolio">
 
-# Даниил · DevOps / SRE
+<h1>Данил · DevOps / DevSecOps</h1>
 
-Развиваюсь в DevOps и инженерии надёжности. Пишу учебные инструменты на **Bash и Python**, практикую **Linux**, диагностику и автоматизацию. Фокус портфолио — **Junior / стажировка**.
+<p><strong>Автоматизировать рутину. Понимать систему. Делать сбои объяснимыми.</strong></p>
 
-Здесь можно посмотреть код, запустить небольшой сервис, создать контролируемый сбой и пройти его диагностику по runbook. Все проекты ниже — учебные.
+<p>Ищу стажировку или junior-роль<br>Linux · контейнеры · CI · наблюдаемость · безопасность</p>
 
-[Запустить стенд](#быстрый-запуск) · [Разобрать сбой](docs/RUNBOOK.md) · [SLO и метрики](docs/SLO.md) · [План развития](docs/ROADMAP.md) · [GitHub-профиль](https://github.com/waitran)
+<a href="https://github.com/waitran"><img src="https://img.shields.io/badge/GitHub-waitran-e2e8f0?style=for-the-badge&amp;logo=github&amp;logoColor=white&amp;labelColor=0f172a" alt="GitHub waitran"></a>
+<img src="https://img.shields.io/badge/Open%20to-Intern%20%2F%20Junior-34d399?style=for-the-badge&amp;labelColor=0f172a" alt="Открыт к стажировкам и junior-позициям">
 
-## Проекты
+<br><br>
 
-### 01 / Reliability Lab
+<a href="#-проекты">Проекты</a> &nbsp;·&nbsp;
+<a href="#-технологии-в-деле">Технологии</a> &nbsp;·&nbsp;
+<a href="#-результаты-и-проверки">Результаты</a> &nbsp;·&nbsp;
+<a href="#-контакт">Контакт</a>
 
-**Python · Docker Compose · Prometheus · GitHub Actions**
+</div>
 
-Небольшой HTTP-сервис с метриками запросов, ошибок и длительности операций. В стенде есть проверки здоровья, правила алертов, тесты и сценарии ошибок/задержек. Запуск локальный; облачный аккаунт не нужен.
+---
 
-| Что проверить | Где смотреть |
-| --- | --- |
-| HTTP-сервис, проверка параметров, счётчики и histogram | [app/](app/), [tests/](tests/) |
-| Сборка контейнера и запуск без root | [Dockerfile](Dockerfile), [compose.yaml](compose.yaml) |
-| Сбор метрик, recording rules, алерты и их тесты | [monitoring/](monitoring/) |
-| Автоматические проверки при push и pull request | [GitHub Actions](.github/workflows/ci.yml) |
-| Определение SLI, SLO и бюджета ошибок | [SLO.md](docs/SLO.md) |
-| Диагностика → восстановление → подтверждение | [RUNBOOK.md](docs/RUNBOOK.md) |
-| Структура разбора инцидента для заполнения после практики | [INCIDENT-TEMPLATE.md](docs/INCIDENT-TEMPLATE.md) |
-| Результаты автоматической проверки стенда | [VALIDATION.md](docs/VALIDATION.md) |
+### Обо мне
 
-```mermaid
-flowchart LR
-    T[Локальный генератор трафика] --> A[Python demo :8080]
-    A --> M["/metrics"]
-    P[Prometheus :9090] -->|scrape каждые 5s| M
-    P --> R[Recording rules и алерты]
-    R --> O[Диагностика по runbook]
-    C[GitHub Actions] -->|тесты и запуск Compose| A
-```
+Развиваюсь в DevOps и DevSecOps через практические проекты: пишу инструменты на **Bash и Python**, собираю контейнерные стенды, настраиваю проверки и разбираюсь в поведении сервисов при сбоях.
 
-Алерты отображаются в интерфейсе Prometheus. Отправка уведомлений и Alertmanager — отдельный следующий этап.
+Мне интересно всё, что связывает код с его эксплуатацией: **воспроизводимый запуск, понятные метрики, диагностика и ограничения доступа**. Здесь собраны учебные работы и pet-проекты с конкретными примерами того, что можно посмотреть в коде.
 
-### 02 / Linux & Automation Diary
+<table>
+<tr>
+<td width="33%" valign="top">
 
-**Linux · Bash · Python · Git**
+<strong>⚙️ Автоматизация</strong><br><br>
+Bash, Python, CLI-инструменты, повторяемые команды запуска и проверки.
 
-Мой [DevSecOps-Diary](https://github.com/waitran/DevSecOps-Diary) — дневник лабораторных и небольших CLI-инструментов:
+</td>
+<td width="33%" valign="top">
 
-| Пример | Что есть в репозитории |
-| --- | --- |
-| [Архивирование и резервные копии](https://github.com/waitran/DevSecOps-Diary/blob/main/day-007/backup_tool.sh) | Bash, аргументы CLI, tar/gzip, журналирование |
-| [Мониторинг GitHub-репозитория](https://github.com/waitran/DevSecOps-Diary/blob/main/day-006/repo_monitor.sh) | curl, jq, HTTP-коды и обработка ответа API |
-| [Разбор SSH-логов](https://github.com/waitran/DevSecOps-Diary/blob/main/day-008/log_parser.py) | Python, регулярные выражения, агрегация IP, JSON |
-| [SSH и systemd](https://github.com/waitran/DevSecOps-Diary/blob/main/day-004/notes.md) | Заметки о сервисах, конфигурации и диагностике |
-| [Git workflow](https://github.com/waitran/DevSecOps-Diary/blob/main/day-005/notes.md) | Ветки, pull request, ревью и merge |
+<strong>📈 Надёжность</strong><br><br>
+Метрики, алерты, SLI/SLO, контролируемые ошибки и диагностика по runbook.
 
-В дневнике также сохранены заметки и промежуточные версии упражнений.
+</td>
+<td width="33%" valign="top">
 
-## Быстрый запуск
+<strong>🛡️ Безопасность</strong><br><br>
+Контейнер без root, ограничение привилегий и ресурсов, минимальные права CI.
 
-Нужны Git, Docker Engine с Compose v2+ и `make`. Для локальных тестов и генератора трафика — Python 3.12+. Python-библиотеки устанавливать не требуется. Порты 8080 и 9090 должны быть свободны.
+</td>
+</tr>
+</table>
+
+## 🚀 Проекты
+
+### 01 &nbsp; Reliability Lab
+
+> **От HTTP-запроса до метрики, алерта и восстановления.**
+
+Учебный стенд для практики эксплуатации: HTTP-сервис на Python, Prometheus, Docker Compose и GitHub Actions. В сервисе можно явно включить ошибки и задержки, наблюдать последствия и пройти диагностику по инструкции.
+
+<img src="https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&amp;logo=python&amp;logoColor=white" alt="Python 3.12"> <img src="https://img.shields.io/badge/Docker-Compose-2496ED?style=flat-square&amp;logo=docker&amp;logoColor=white" alt="Docker Compose"> <img src="https://img.shields.io/badge/Prometheus-metrics%20%26%20alerts-E6522C?style=flat-square&amp;logo=prometheus&amp;logoColor=white" alt="Prometheus"> <img src="https://img.shields.io/badge/GitHub_Actions-CI-2088FF?style=flat-square&amp;logo=githubactions&amp;logoColor=white" alt="GitHub Actions">
+
+| Задача | Реализация | Посмотреть |
+| :--- | :--- | :--- |
+| Наблюдать поведение сервиса | Счётчики HTTP-ответов, histogram задержки, health/readiness endpoints | [Код сервиса][lab-app] |
+| Воспроизводить среду | Compose, healthcheck, лимиты CPU/RAM/PID, постоянный том Prometheus | [Конфигурация][lab-compose] |
+| Проверять изменения | Unit-тесты, валидация конфигурации, тесты правил, сборка и smoke-проверка | [CI workflow][lab-ci] |
+| Обнаруживать деградацию | Алерты недоступности target, доли ошибок и p95 задержки | [Правила и тестовые ряды][lab-monitoring] |
+| Восстанавливаться по инструкции | Сценарии ошибок и задержек, диагностика, проверка восстановления | [Runbook][lab-runbook] |
+| Уточнять границы измерений | Определения SLI, цели SLO, бюджет ошибок и ограничения данных | [SLO][lab-slo] |
+
+**Инженерный акцент:** проверки здоровья не увеличивают счётчик полезных операций; инъекции выключены по умолчанию в приложении; алерты ошибок и задержки учитывают минимальный трафик.
+
+**[Исходники стенда →][lab]** &nbsp;·&nbsp; **[Отчёт о проверке →][lab-validation]** &nbsp;·&nbsp; **[Успешный CI →][lab-run]**
+
+<details>
+<summary><strong>Воспроизвести лабораторию</strong></summary>
+
+<br>
+
+Текущая ветка портфолио содержит только этот README. Полный стенд сохранён в истории на коммите `4e3681d`; все ссылки проекта закреплены за этой версией.
+
+Нужны Git, Docker Engine с Compose v2+, make и Python 3.12+. Порты 8080 и 9090 должны быть свободны.
 
 ```bash
-git clone https://github.com/waitran/sysadmin-portfolio.git
-cd sysadmin-portfolio
+git clone https://github.com/waitran/DevOps-portfolio.git
+cd DevOps-portfolio
+git switch --detach 4e3681da63ffaa4e348e7701265964e3afbbe44a
+
 make test
+make check-config
+make test-rules
 make up
 make smoke
 make load
 ```
 
-Откройте [сервис](http://127.0.0.1:8080/healthz), [метрики](http://127.0.0.1:8080/metrics), [targets](http://127.0.0.1:9090/targets) и [алерты](http://127.0.0.1:9090/alerts). После двух успешных сборов метрик можно выполнить запрос `demo:requests:rate5m` в Prometheus.
+Сервис: [127.0.0.1:8080/healthz](http://127.0.0.1:8080/healthz) · Метрики: [127.0.0.1:8080/metrics](http://127.0.0.1:8080/metrics) · Prometheus: [127.0.0.1:9090](http://127.0.0.1:9090)
 
 ```bash
-make chaos       # 3 минуты трафика, 25% ответов — учебные ошибки HTTP 500
-make recover     # 5,5 минуты успешного трафика; старые ошибки уйдут из окна 5m
-make latency     # отдельный сценарий: ответы с задержкой 600 ms
-make down        # остановка стенда; история Prometheus сохраняется в volume
+make chaos       # 180 секунд: каждый четвёртый запрос возвращает учебный HTTP 500
+make recover     # 330 секунд успешного трафика, чтобы ошибки вышли из окна 5m
+make latency     # отдельное упражнение с задержкой 600 ms
+make recover
+make down
 ```
 
-Сценарии можно остановить через `Ctrl+C`. Инъекции включены явно через `ENABLE_FAULT_INJECTION=true` в Compose. Сервис и Prometheus опубликованы только на `127.0.0.1`; стенд предназначен для локальной практики. При запуске сервиса напрямую инъекции по умолчанию выключены.
+Сценарии выполняются по одному. Порты Compose привязаны к loopback; инъекции предназначены для локальной лаборатории. Подробности и условия срабатывания алертов — в [runbook][lab-runbook].
 
-## Как оценить проект
+</details>
 
-1. Запустить `make test`, `make check-config`, `make test-rules` и `make smoke`.
-2. Убедиться, что target `demo` имеет состояние **UP**.
-3. Вызвать учебные ошибки через `make chaos` и сопоставить счётчики, отношение ошибок и состояние алерта.
-4. Пройти [runbook](docs/RUNBOOK.md), восстановить успешный трафик и дождаться выхода ошибок из окна наблюдения.
-5. Заполнить [шаблон инцидента](docs/INCIDENT-TEMPLATE.md) своими наблюдениями и замерами.
+<br>
 
-99,5% успешных операций за 30 дней — **учебная целевая SLO**, а не измеренная доступность этого проекта. Метрика охватывает завершённые валидные операции `/api/work`; сетевые ошибки и полная недоступность требуют отдельных сигналов. Подробнее о границах измерения — в [SLO.md](docs/SLO.md).
+### 02 &nbsp; Linux & Automation Diary
 
-## Дальше
+> **Небольшие инструменты для повседневных инженерных задач.**
 
-Ближайшие шаги: synthetic checks, маршрутизация уведомлений, дашборд, развёртывание в Kubernetes и инфраструктура как код. Статус и критерии готовности — в [ROADMAP.md](docs/ROADMAP.md).
+Публичный дневник практики Linux, Bash, Python и Git. Команды, заметки и CLI-скрипты позволяют проследить обучение на конкретных примерах.
 
-Для связи и просмотра остальных работ: [@waitran на GitHub](https://github.com/waitran).
+<img src="https://img.shields.io/badge/Linux-practice-FCC624?style=flat-square&amp;logo=linux&amp;logoColor=black" alt="Linux"> <img src="https://img.shields.io/badge/Bash-automation-4EAA25?style=flat-square&amp;logo=gnubash&amp;logoColor=white" alt="Bash"> <img src="https://img.shields.io/badge/Python-tooling-3776AB?style=flat-square&amp;logo=python&amp;logoColor=white" alt="Python"> <img src="https://img.shields.io/badge/Git-workflow-F05032?style=flat-square&amp;logo=git&amp;logoColor=white" alt="Git">
+
+| Инструмент | Что показывает |
+| :--- | :--- |
+| [Backup Tool][diary-backup] | Аргументы CLI, tar/gzip, проверка входных данных и журналирование |
+| [GitHub Repo Monitor][diary-monitor] | Запросы к API через curl, разбор JSON в jq, обработка HTTP-кодов |
+| [SSH Log Parser][diary-logs] | Разбор событий аутентификации, агрегация по IP, JSON-отчёт |
+| [SSH и systemd][diary-systemd] | Заметки по работе с сервисами и диагностике |
+| [Git workflow][diary-git] | Ветки, pull request и ревью |
+
+Это учебные инструменты: например, эвристика парсера логов по числу неудачных входов требует проверки контекста и сама по себе не доказывает атаку.
+
+**[Открыть DevSecOps-Diary →](https://github.com/waitran/DevSecOps-Diary)**
+
+<br>
+
+### 03 &nbsp; IT Radar
+
+> **Автоматизация поиска стажировок и IT-возможностей.**
+
+Pet-проект на Python: сбор публикаций из публичных источников, фильтрация и дедупликация, хранение в SQLite, Telegram-интерфейс и контейнерный запуск.
+
+**Статус:** исходники IT Radar сейчас закрыты. Проект упомянут как дополнительная работа; публичные доказательства навыков в этом портфолио — Reliability Lab и DevSecOps-Diary.
+
+## 🧰 Технологии в деле
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/Linux-0f172a?style=for-the-badge&amp;logo=linux&amp;logoColor=FCC624" alt="Linux">
+<img src="https://img.shields.io/badge/Bash-0f172a?style=for-the-badge&amp;logo=gnubash&amp;logoColor=4EAA25" alt="Bash">
+<img src="https://img.shields.io/badge/Python-0f172a?style=for-the-badge&amp;logo=python&amp;logoColor=3776AB" alt="Python">
+<img src="https://img.shields.io/badge/Git-0f172a?style=for-the-badge&amp;logo=git&amp;logoColor=F05032" alt="Git">
+<br>
+<img src="https://img.shields.io/badge/Docker-0f172a?style=for-the-badge&amp;logo=docker&amp;logoColor=2496ED" alt="Docker">
+<img src="https://img.shields.io/badge/GitHub_Actions-0f172a?style=for-the-badge&amp;logo=githubactions&amp;logoColor=2088FF" alt="GitHub Actions">
+<img src="https://img.shields.io/badge/Prometheus-0f172a?style=for-the-badge&amp;logo=prometheus&amp;logoColor=E6522C" alt="Prometheus">
+
+</div>
+
+<br>
+
+| Область | Подтверждённая практика |
+| :--- | :--- |
+| **Linux & scripting** | Bash/Python-скрипты, работа с файлами, логами, HTTP и JSON |
+| **Контейнеры** | Dockerfile, Docker Compose, healthcheck, volumes и ограничения ресурсов |
+| **CI** | GitHub Actions: тесты → проверка конфигурации → сборка → запуск → smoke |
+| **Observability** | Prometheus, PromQL, counters/histograms, recording rules и алерты |
+| **Reliability** | Учебные SLI/SLO, инъекция ошибок/задержек, runbook |
+| **Security** | Non-root приложение, read-only FS, drop capabilities, no-new-privileges, права CI `contents: read` |
+
+**Следующий фокус — Kubernetes и CD:** probes, requests/limits, rolling update, проверяемое развёртывание и откат. Эти этапы пока не представлены здесь как завершённые проекты. Публичных исходников KubeOptimizer и отдельного стенда Chaos Mesh/k6 для включения в портфолио на момент оформления не найдено.
+
+## ✅ Результаты и проверки
+
+| Проверка Reliability Lab | Зафиксированный результат |
+| :--- | :--- |
+| Unit-тесты | **8 / 8** — по отчёту от 8 ноября 2026 |
+| Правила Prometheus | **6 сценариев** на синтетических временных рядах |
+| Контролируемые ошибки | **40 запросов → 30 × HTTP 200 + 10 × HTTP 500**, неожиданных ответов 0 |
+| Контролируемая задержка | **8 запросов с 600 ms → 8 × HTTP 200**, неожиданных ответов 0 |
+| Удалённый CI для версии `4e3681d` | **[Успешное выполнение][lab-run]** |
+
+Числа относятся к [историческому отчёту автоматической проверки][lab-validation] и закреплённой версии стенда. Цель **99,5% успешных операций за 30 дней** описана в SLO как учебная цель; достигнутая доступность и production-опыт не заявляются. Доставка уведомлений, Kubernetes и автоматический deployment в эту версию лаборатории не входят.
+
+<details>
+<summary><strong>🇬🇧 English overview</strong></summary>
+
+<br>
+
+**Danil · DevOps / DevSecOps · seeking an internship or junior role**
+
+I build learning projects around Linux automation, containerised services, CI and observability. My public work includes a Python reliability lab with Docker Compose, Prometheus metrics and alert tests, plus Bash/Python CLI tools.
+
+- **Reliability Lab:** health checks, counters and latency histograms, controlled fault injection, CI validation, SLI/SLO definitions and an incident runbook.
+- **Linux & Automation Diary:** backup tooling, GitHub API checks and SSH log parsing.
+- **Security practice:** a non-root application container, read-only filesystems, dropped capabilities, resource limits and read-only CI permissions.
+- **Next:** Kubernetes deployment, delivery pipelines and verified rollback.
+
+All metrics above describe a dated lab validation. They do not represent production availability. IT Radar source repositories are currently private.
+
+**[Source snapshot][lab] · [Validation report][lab-validation] · [CI evidence][lab-run]**
+
+</details>
+
+---
+
+<div align="center">
+
+<h3 id="-контакт">🤝 Контакт</h3>
+
+<p>Открыт к стажировкам и junior-позициям в DevOps / DevSecOps.<br>Готов обсудить проекты, технические решения и задачи команды.</p>
+
+<a href="https://github.com/waitran"><img src="https://img.shields.io/badge/Посмотреть_профиль-@waitran-34d399?style=for-the-badge&amp;logo=github&amp;logoColor=white&amp;labelColor=0f172a" alt="Профиль waitran на GitHub"></a>
+
+<br><br>
+
+<sub>Учебные проекты · Проверяемые исходники · Понятные ограничения</sub>
+
+</div>
+
+[lab]: https://github.com/waitran/DevOps-portfolio/tree/4e3681da63ffaa4e348e7701265964e3afbbe44a
+[lab-app]: https://github.com/waitran/DevOps-portfolio/blob/4e3681da63ffaa4e348e7701265964e3afbbe44a/app/server.py
+[lab-compose]: https://github.com/waitran/DevOps-portfolio/blob/4e3681da63ffaa4e348e7701265964e3afbbe44a/compose.yaml
+[lab-ci]: https://github.com/waitran/DevOps-portfolio/blob/4e3681da63ffaa4e348e7701265964e3afbbe44a/.github/workflows/ci.yml
+[lab-monitoring]: https://github.com/waitran/DevOps-portfolio/tree/4e3681da63ffaa4e348e7701265964e3afbbe44a/monitoring
+[lab-runbook]: https://github.com/waitran/DevOps-portfolio/blob/4e3681da63ffaa4e348e7701265964e3afbbe44a/docs/RUNBOOK.md
+[lab-slo]: https://github.com/waitran/DevOps-portfolio/blob/4e3681da63ffaa4e348e7701265964e3afbbe44a/docs/SLO.md
+[lab-validation]: https://github.com/waitran/DevOps-portfolio/blob/4e3681da63ffaa4e348e7701265964e3afbbe44a/docs/VALIDATION.md
+[lab-run]: https://github.com/waitran/DevOps-portfolio/actions/runs/42474209708
+[diary-backup]: https://github.com/waitran/DevSecOps-Diary/blob/4cce82c3dfa3f71d641aa1f53627b0c817e6f660/day-007/backup_tool.sh
+[diary-monitor]: https://github.com/waitran/DevSecOps-Diary/blob/4cce82c3dfa3f71d641aa1f53627b0c817e6f660/day-006/repo_monitor.sh
+[diary-logs]: https://github.com/waitran/DevSecOps-Diary/blob/4cce82c3dfa3f71d641aa1f53627b0c817e6f660/day-008/log_parser.py
+[diary-systemd]: https://github.com/waitran/DevSecOps-Diary/blob/4cce82c3dfa3f71d641aa1f53627b0c817e6f660/day-004/notes.md
+[diary-git]: https://github.com/waitran/DevSecOps-Diary/blob/4cce82c3dfa3f71d641aa1f53627b0c817e6f660/day-005/notes.md
