@@ -24,7 +24,7 @@
 
 ### Обо мне
 
-Развиваюсь в DevOps и DevSecOps через практические проекты: пишу инструменты на **Bash и Python**, собираю контейнерные стенды, настраиваю проверки и разбираюсь в поведении сервисов при сбоях.
+Развиваюсь в DevOps и DevSecOps через практические проекты: работаю с **Linux и Python**, собираю контейнерные стенды, настраиваю проверки и разбираюсь в поведении сервисов при сбоях.
 
 Мне интересно всё, что связывает код с его эксплуатацией: **воспроизводимый запуск, понятные метрики, диагностика и ограничения доступа**. Здесь собраны учебные работы и pet-проекты с конкретными примерами того, что можно посмотреть в коде.
 
@@ -33,7 +33,7 @@
 <td width="33%" valign="top">
 
 <strong>⚙️ Автоматизация</strong><br><br>
-Bash, Python, CLI-инструменты, повторяемые команды запуска и проверки.
+Python, CLI-инструменты, повторяемые команды запуска и проверки.
 
 </td>
 <td width="33%" valign="top">
@@ -112,35 +112,13 @@ make down
 
 <br>
 
-### 02 &nbsp; Linux & Automation Diary
-
-> **Небольшие инструменты для повседневных инженерных задач.**
-
-Публичный дневник практики Linux, Bash, Python и Git. Команды, заметки и CLI-скрипты позволяют проследить обучение на конкретных примерах.
-
-<img src="https://img.shields.io/badge/Linux-practice-FCC624?style=flat-square&amp;logo=linux&amp;logoColor=black" alt="Linux"> <img src="https://img.shields.io/badge/Bash-automation-4EAA25?style=flat-square&amp;logo=gnubash&amp;logoColor=white" alt="Bash"> <img src="https://img.shields.io/badge/Python-tooling-3776AB?style=flat-square&amp;logo=python&amp;logoColor=white" alt="Python"> <img src="https://img.shields.io/badge/Git-workflow-F05032?style=flat-square&amp;logo=git&amp;logoColor=white" alt="Git">
-
-| Инструмент | Что показывает |
-| :--- | :--- |
-| [Backup Tool][diary-backup] | Аргументы CLI, tar/gzip, проверка входных данных и журналирование |
-| [GitHub Repo Monitor][diary-monitor] | Запросы к API через curl, разбор JSON в jq, обработка HTTP-кодов |
-| [SSH Log Parser][diary-logs] | Разбор событий аутентификации, агрегация по IP, JSON-отчёт |
-| [SSH и systemd][diary-systemd] | Заметки по работе с сервисами и диагностике |
-| [Git workflow][diary-git] | Ветки, pull request и ревью |
-
-Это учебные инструменты: например, эвристика парсера логов по числу неудачных входов требует проверки контекста и сама по себе не доказывает атаку.
-
-**[Открыть DevSecOps-Diary →](https://github.com/waitran/DevSecOps-Diary)**
-
-<br>
-
-### 03 &nbsp; IT Radar
+### 02 &nbsp; IT Radar
 
 > **Автоматизация поиска стажировок и IT-возможностей.**
 
 Pet-проект на Python: сбор публикаций из публичных источников, фильтрация и дедупликация, хранение в SQLite, Telegram-интерфейс и контейнерный запуск.
 
-**Статус:** исходники IT Radar сейчас закрыты. Проект упомянут как дополнительная работа; публичные доказательства навыков в этом портфолио — Reliability Lab и DevSecOps-Diary.
+**Статус:** исходники IT Radar сейчас закрыты. Проект упомянут как дополнительная работа; публичные исходники и результаты проверок доступны в разделе Reliability Lab.
 
 ## 🧰 Технологии в деле
 
@@ -161,7 +139,7 @@ Pet-проект на Python: сбор публикаций из публичн�
 
 | Область | Подтверждённая практика |
 | :--- | :--- |
-| **Linux & scripting** | Bash/Python-скрипты, работа с файлами, логами, HTTP и JSON |
+| **Linux & scripting** | Python-сервис и CLI-генератор трафика, HTTP/JSON, команды Make для запуска и диагностики |
 | **Контейнеры** | Dockerfile, Docker Compose, healthcheck, volumes и ограничения ресурсов |
 | **CI** | GitHub Actions: тесты → проверка конфигурации → сборка → запуск → smoke |
 | **Observability** | Prometheus, PromQL, counters/histograms, recording rules и алерты |
@@ -174,13 +152,15 @@ Pet-проект на Python: сбор публикаций из публичн�
 
 | Проверка Reliability Lab | Зафиксированный результат |
 | :--- | :--- |
-| Unit-тесты | **8 / 8** — по отчёту от 8 ноября 2026 |
+| Unit-тесты | **8 / 8** — GitHub Actions, 14 ноября 2026 |
 | Правила Prometheus | **6 сценариев** на синтетических временных рядах |
 | Контролируемые ошибки | **40 запросов → 30 × HTTP 200 + 10 × HTTP 500**, неожиданных ответов 0 |
 | Контролируемая задержка | **8 запросов с 600 ms → 8 × HTTP 200**, неожиданных ответов 0 |
-| Удалённый CI для версии `4e3681d` | **[Успешное выполнение][lab-run]** |
+| Docker и HTTP | **Сборка и запуск успешны**, `/healthz`, `/readyz`, `/api/work`, `/metrics` прошли smoke-проверку |
+| Prometheus | **Сбор метрик подтверждён:** `up{job="demo"}=1` |
+| Удалённый CI для версии `4e3681d` | **[Успешное выполнение 14 ноября 2026][lab-run]** |
 
-Числа относятся к [историческому отчёту автоматической проверки][lab-validation] и закреплённой версии стенда. Цель **99,5% успешных операций за 30 дней** описана в SLO как учебная цель; достигнутая доступность и production-опыт не заявляются. Доставка уведомлений, Kubernetes и автоматический deployment в эту версию лаборатории не входят.
+Результаты подтверждены логами [запуска GitHub Actions от 14 ноября 2026][lab-run] для закреплённой версии `4e3681d`. Правила алертов проверены на синтетических временных рядах; полный ручной цикл `pending → firing → inactive` этим запуском не подтверждён. Подробности предыдущей проверки — в [отчёте лаборатории][lab-validation]. Цель **99,5% успешных операций за 30 дней** описана в SLO как учебная цель; достигнутая доступность и production-опыт не заявляются. Доставка уведомлений, Kubernetes и автоматический deployment в эту версию лаборатории не входят.
 
 <details>
 <summary><strong>🇬🇧 English overview</strong></summary>
@@ -189,14 +169,13 @@ Pet-проект на Python: сбор публикаций из публичн�
 
 **Danil · DevOps / DevSecOps · seeking an internship or junior role**
 
-I build learning projects around Linux automation, containerised services, CI and observability. My public work includes a Python reliability lab with Docker Compose, Prometheus metrics and alert tests, plus Bash/Python CLI tools.
+I build learning projects around Linux automation, containerised services, CI and observability. My public work includes a Python reliability lab with Docker Compose, Prometheus metrics and alert tests.
 
 - **Reliability Lab:** health checks, counters and latency histograms, controlled fault injection, CI validation, SLI/SLO definitions and an incident runbook.
-- **Linux & Automation Diary:** backup tooling, GitHub API checks and SSH log parsing.
 - **Security practice:** a non-root application container, read-only filesystems, dropped capabilities, resource limits and read-only CI permissions.
 - **Next:** Kubernetes deployment, delivery pipelines and verified rollback.
 
-All metrics above describe a dated lab validation. They do not represent production availability. IT Radar source repositories are currently private.
+The lab passed GitHub Actions validation on 14 November 2026: 8 unit tests, Prometheus rule tests, container build/start, HTTP smoke checks, injected error/latency traffic and a successful Prometheus scrape. All metrics above describe this lab validation. They do not represent production availability. IT Radar source repositories are currently private.
 
 **[Source snapshot][lab] · [Validation report][lab-validation] · [CI evidence][lab-run]**
 
@@ -226,9 +205,4 @@ All metrics above describe a dated lab validation. They do not represent product
 [lab-runbook]: https://github.com/waitran/DevOps-portfolio/blob/4e3681da63ffaa4e348e7701265964e3afbbe44a/docs/RUNBOOK.md
 [lab-slo]: https://github.com/waitran/DevOps-portfolio/blob/4e3681da63ffaa4e348e7701265964e3afbbe44a/docs/SLO.md
 [lab-validation]: https://github.com/waitran/DevOps-portfolio/blob/4e3681da63ffaa4e348e7701265964e3afbbe44a/docs/VALIDATION.md
-[lab-run]: https://github.com/waitran/DevOps-portfolio/actions/runs/42474209708
-[diary-backup]: https://github.com/waitran/DevSecOps-Diary/blob/4cce82c3dfa3f71d641aa1f53627b0c817e6f660/day-007/backup_tool.sh
-[diary-monitor]: https://github.com/waitran/DevSecOps-Diary/blob/4cce82c3dfa3f71d641aa1f53627b0c817e6f660/day-006/repo_monitor.sh
-[diary-logs]: https://github.com/waitran/DevSecOps-Diary/blob/4cce82c3dfa3f71d641aa1f53627b0c817e6f660/day-008/log_parser.py
-[diary-systemd]: https://github.com/waitran/DevSecOps-Diary/blob/4cce82c3dfa3f71d641aa1f53627b0c817e6f660/day-004/notes.md
-[diary-git]: https://github.com/waitran/DevSecOps-Diary/blob/4cce82c3dfa3f71d641aa1f53627b0c817e6f660/day-005/notes.md
+[lab-run]: https://github.com/waitran/DevOps-portfolio/actions/runs/43627817612
